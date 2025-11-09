@@ -19,6 +19,16 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
+
+// Public welcome page (before UEBA)
+app.get('/', (req, res) => {
+  res.status(200).json({
+    ok: true,
+    service: 'Auto Maintenance API',
+    try: ['/health', '/api/vehicles?agent=UserUI', '/api/ueba/events?agent=UserUI']
+  });
+});
+
 app.use(uebaMiddleware);
 
 app.get('/health', (req, res) => res.json({ ok: true }));
