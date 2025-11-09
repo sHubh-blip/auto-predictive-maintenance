@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: auto-maintenance-server
+    env: node
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: node src/app.js
+    plan: free
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://<your-atlas-connection-string>
+      - key: PY_SERVICE_URL
+        # After the Python service deploys, copy its public URL here (e.g., https://auto-ai.onrender.com)
+        value: https://REPLACE_WITH_PY_SERVICE
+  - type: web
+    name: auto-ai
+    env: python
+    rootDir: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn predictive_service:app --host 0.0.0.0 --port 8000
+    plan: free
+  - type: static
+    name: auto-frontend
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    plan: free
