@@ -1,4 +1,4 @@
-const base = ''
+const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_BASE) ? import.meta.env.VITE_API_BASE : ''
 
 async function j(path, opts={}){
   const res = await fetch(base+path, { headers: { 'Content-Type': 'application/json', 'x-agent': 'UserUI' }, ...opts })
