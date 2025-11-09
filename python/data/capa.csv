@@ -1,0 +1,7 @@
+component,defect_code,root_cause,corrective_action,preventive_action,recurrence_count
+engine,P0300,Random misfire,Spark plug & coil check,Supplier QC audit,31
+transmission,P0420,Catalyst efficiency,Inspect O2 sensor & catalyst,ECU calibration update,22
+brakes,C1234,Pad wear,Replace pads,Increase inspection frequency,27
+battery,B0001,Low charge cycles,Replace battery,Improve alternator calibration,19
+tires,T0456,Uneven pressure,Rotate/replace tires,TPMS calibration & driver education,14
+coolant,C9999,Overheat due to leak,Fix leak and refill coolant,Hose quality improvement,9
